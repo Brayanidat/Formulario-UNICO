@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <style>
+        body {
+            background-color: rgb(1, 1, 1);
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        input,
+        select {
+            max-width: 100%;
+        }
+
+        .card {
+            margin: 60px auto;
+            padding: 10px;
+            background-color: rgb(161, 188, 129);
+            width: 800px;
+            min-height: 270px;
+        }
+
+        .n {
+            font-family: serif;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            width: 740px;
+            text-align: right;
+            margin: auto;
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: rgb(196, 223, 157);
+            width: 740px;
+            min-height: 170px;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .result {
+            width: 500px;
+            margin: 20px auto;
+            text-align: left;
+            background-color: rgb(114, 187, 196);
+            color: rgb(0, 0, 0);
+            padding: 10px;
+        }
+
+        .botones {
+            padding: 5px 7px;
+            background-color: rgb(234, 234, 229);
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-right: 25px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .vuelto {
+            background-color: rgb(133, 211, 185);
+            padding: 10px;
+            color: rgb(14, 15, 15);
+            width: 400px;
+            min-height: 100px;
+            margin: 20px auto;
+            line-height: 1.5;
+        }
+
+        /* CELULAR */
+
+        @media screen and (max-width: 768px) {
+
+            .card {
+                width: 95%;
+                min-height: auto;
+            }
+
+            .n {
+                width: 95%;
+            }
+
+            .contenedor {
+                width: 95%;
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .vuelto {
+                width: 95%;
+                min-height: auto;
+            }
+
+            .result {
+                width: 95%;
+            }
+
+            form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mover">
+        <div class="card">
+            <h1>
+                Factura
+            </h1>
+
+            <div class="n">
+                N° : <input type="number" id="n" required><br>
+            </div>
+
+            <div class="contenedor">
+                <form>
+                    Cliente: <input type="text" id="cliente" required> <br><br>
+
+                    Dirrección: <input type="text" id="direccion" required> <br><br>
+
+                    Telefono: <input type="text" id="telefono" required>
+
+                    <label>
+                        Tipo de pago:
+                        <select id="pago" required>
+                            <option value="" selected disabled>Seleccione</option>
+                            <option value="contado">Contado</option>
+                            <option value="credito">Credito</option>
+                        </select>
+                    </label>
+                    <br>
+
+
+                </form>
+
+                <form>
+                    <p style="padding-top: 5px; padding-bottom: 5px;">RUC : <input type="text" id="ruc" required></p>
+
+                    Ciudad : <input type="text" id="ciudad" required><br><br>
+
+                    <label>
+                        Articulo :
+                        <select id="articulo" required>
+                            <option value="" selected disabled>Seleccione</option>
+                            <option value="op1">Teclado</option>
+                            <option value="op2">Case</option>
+                            <option value="op3">Mouse</option>
+                            <option value="op4">Impresora</option>
+                            <option value="op5">Parlante</option>
+                            <option value="op6">USB 64GB</option>
+                        </select>
+                    </label>
+                    <br><br>
+
+
+                    Cantidad: <input type="number" id="cantidad" required>
+                    <br><br><input class="botones" type="button" value="Imprimir" onclick="imprimir()">
+                    <input class="botones" type="button" value="Limpiar" onclick="limpiar()">
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <form class="vuelto">
+        <h3 style="margin-bottom: 3px;">PAGO EN EFECTIVO</h3>
+
+        DINERO ADQUIRIDO : <input type="text" id="dineroAdd"><br>
+        <input
+            style="margin:auto; margin-top: 10px; margin-left: 10px; padding: 5px 8px; background-color: rgb(238, 176, 94); color: black; border: 0; border-radius: 4px; cursor: pointer;"
+            type="button" value="Vuelto" onclick="vuelto()">
+        <input
+            style="margin-top: 10px; margin-left: 10px; padding: 5px 8px; background-color: rgb(226, 163, 79); color: black; border: 0; border-radius: 4px; cursor: pointer;"
+            type="button" value="Borrar" onclick="borrar()">
+    </form>
+    <div class="result" id="resultado">
+
+    </div>
+
+    <script src="factura.js"></script>
+</body>
+
+</html>
